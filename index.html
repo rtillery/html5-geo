@@ -20,10 +20,12 @@
     </article>
 <script>
 function success(position) {
+window.alert("success() entry.");
   var s = document.querySelector('#status');
   
   if (s.className == 'success') {
     // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
+window.alert("success() done (detour).");
     return;
   }
   
@@ -52,14 +54,17 @@ function success(position) {
       map: map, 
       title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
   });
+window.alert("success() done.");
 }
 
 function error(msg) {
+window.alert("error() entry.");
   var s = document.querySelector('#status');
   s.innerHTML = typeof msg == 'string' ? msg : "failed";
   s.className = 'fail';
   
   // console.log(arguments);
+window.alert("error() done.");
 }
 
 if (navigator.geolocation) {
